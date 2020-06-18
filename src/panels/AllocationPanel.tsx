@@ -20,6 +20,25 @@ export default function AllocationPanel() {
   }, []);
 
   return (
-    <h2>Allocation Panel</h2>
+    <Chart>
+     <ChartTitle text="Asset Allocation"> </ChartTitle>
+      <ChartSeries>
+        <ChartSeriesItem type="donut" data={data}>
+        <ChartSeriesLabels
+         content={e=>`${e.value}%`}
+         background="none"
+         color="#fff"
+         >
+        </ChartSeriesLabels>
+        </ChartSeriesItem>
+    </ChartSeries>
+   
+    <ChartLegend position={"bottom"} visible={true}></ChartLegend>
+    <ChartTooltip render={(e:any)=>(
+      <div>
+         {e.point?e.point.category:""}
+      </div>
+    )}/>
+    </Chart>
   )
 }

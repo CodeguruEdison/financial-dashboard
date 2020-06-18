@@ -1,15 +1,17 @@
 export interface FundInfo {
-  managers: [{
-    firstName: string,
+  managers: Manager[],
+  quarters: Quarter[]
+}
+export interface Manager {
+  firstName: string,
     lastName: string,
     position: string
-  }],
-  quarters: [{
-    title: string,
-    details: [{
-      name: string,
-      value: string
-    }]
+}
+export interface Quarter {
+  title: string,
+  details: [{
+    name: string,
+    value: string
   }]
 }
 

@@ -10,8 +10,24 @@ export default function PositionsPanel() {
       setPositions(data);
     });
   }, []);
-
+  const ChangeCell = (props: GridCellProps) => {
+    const value = props.dataItem[props.field || ""];
+    return (
+      <td style={{ color: value > 0 ? "green" : "red" }}>
+        {value}%
+      </td>
+    )
+  }
   return (
-    <h2>Positions Panel</h2>
+    <div>
+       <Grid data ={positions} style={{height:700}}>
+       <GridColumn title="Symbol" field ="symbol" locked={true} width={100}></GridColumn>
+       <GridColumn title="Name" field ="name"></GridColumn>
+       <GridColumn title="Change" field ="day_change" cell={ChangeCell}></GridColumn>
+       <GridColumn title="% Change" field ="change_pct" cell={ChangeCell}></GridColumn>
+       <GridColumn title="Volume" field="volume" />
+       <GridColumn title="Market Cap" field="market_cap" />
+       </Grid>
+    </div>
   );
 }
